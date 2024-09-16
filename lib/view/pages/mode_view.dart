@@ -51,7 +51,8 @@ class ModeView extends StatelessWidget {
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 10),
                       child: Image.asset(
                         fit: BoxFit.fill,
                         "assets/images/merge.jpg",
@@ -90,7 +91,8 @@ class ModeView extends StatelessWidget {
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 10),
                       child: Image.asset(
                         fit: BoxFit.fill,
                         "assets/images/number_drop.jpg",
