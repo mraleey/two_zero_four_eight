@@ -94,15 +94,13 @@ class SinglePlayerView extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      // Add the image to the box at the given index
                       gridController.addImage(index);
                     },
                     child: Obx(() {
                       return Container(
                         margin: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color:
-                              Colors.blue, // Replace with your `kPrimaryColor`
+                          color: Colors.blue,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Center(
@@ -112,8 +110,7 @@ class SinglePlayerView extends StatelessWidget {
                                   height: 100,
                                   width: 100,
                                   decoration: BoxDecoration(
-                                    color: Colors
-                                        .grey, // Replace with your `kLightColor`
+                                    color: Colors.grey,
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                 ),
