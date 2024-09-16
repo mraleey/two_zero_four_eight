@@ -42,13 +42,9 @@ class AboutUsView extends StatelessWidget {
                   ),
                   getVerticalSpace(15),
                   Text(
-                    """Tic Tac Toe 2 Player: XO Game is a classic puzzle game, also known as XO or Noughts and Crosses. 
-                    
-If you are an adult, you will get your favorite old memories of Tic Tac Toe. 
-
-It is the best digital version of the classic Tic Tac Toe game that anyone can play online or offline.
-
-User can simply select their symbol (X/O) at the start of their game and they can play with their friends in their free""",
+                    """2048 is an easy and fun puzzle game. Even if you don't love numbers you will love this game. It is played on a 4x4 grid using the arrows or W, A, S, D keys alternatively. Every time you press a key - all tiles slide. Tiles with the same value that bump into one-another are merged. Although there might be an optimal strategy to play, there is always some level of chance. If you beat the game and would like to master it, try to finish with a smaller score. That would mean that you finished with less moves.
+You’re playing the original version of 2048, the popular and addictive puzzle game available to play completely free and loved by millions.
+2048 was inspired by 1024 by Veewo Studio and is conceptually similar to Threes by Asher Vollmer.""",
                     style: TextStyle(
                       fontSize: getTextSize(15),
                       fontWeight: FontWeight.w400,

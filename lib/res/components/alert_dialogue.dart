@@ -1,53 +1,137 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:two_zero_four_eight/res/components/size.dart';
 
+import '../../view/pages/mode_view.dart';
+import '../constants/fonts.dart';
 import 'app_colors.dart';
 
+class CustomAlertDialogue extends StatelessWidget {
+  const CustomAlertDialogue({super.key});
 
-class CustomDialog {
-  static void showLoadingDialog(BuildContext context, String message,
-      {Duration delay = const Duration(seconds: 2)}) {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          backgroundColor: kPrimaryColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      backgroundColor: kWhiteColor,
+      title: Center(
+        child: Text(
+          "Game Paused",
+          style: TextStyle(
+            color: kDarkColor,
+            fontSize: CustomFontSize.extraExtraLarge(context),
+            fontWeight: FontWeight.bold,
           ),
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-          content: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(
-                height: 24.0,
-                width: 24.0,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2.0,
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    kWhiteColor,
-                  ),
+        ),
+      ),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: Get.width * 0.5,
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                colors: [kPrimaryGreen, kButtonSecondStart],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(50),
+            ),
+            child: MaterialButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.play_circle_filled,
+                      color: kWhiteColor,
+                    ),
+                    getHorizontalSpace(10),
+                    Text(
+                      "Resume",
+                      style: TextStyle(
+                          fontSize: CustomFontSize.extraExtraLarge(context),
+                          color: kWhiteColor),
+                    ),
+                  ],
                 ),
               ),
-              const SizedBox(width: 20.0),
-              Text(
-                message,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 16.0,
-                  color: kWhiteColor,
+            ),
+          ),
+          getVerticalSpace(15),
+          Container(
+            width: Get.width * 0.5,
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                colors: [kPrimaryRed, kButtonSecondStart],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(50),
+            ),
+            child: MaterialButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.refresh,
+                      color: kWhiteColor,
+                    ),
+                    getHorizontalSpace(10),
+                    Text(
+                      "Reset",
+                      style: TextStyle(
+                          fontSize: CustomFontSize.extraExtraLarge(context),
+                          color: kWhiteColor),
+                    ),
+                  ],
                 ),
               ),
-            ],
+            ),
           ),
-        );
-      },
-    ).then((_) {
-      if (ModalRoute.of(context)?.isCurrent == true) {
-        Navigator.of(context).pop();
-      }
-    });
+          getVerticalSpace(15),
+          Container(
+            width: Get.width * 0.5,
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                colors: [kButtonFirstStart, kButtonSecondStart],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(50),
+            ),
+            child: MaterialButton(
+              onPressed: () {
+                Get.offAll(() => const ModeView());
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.home,
+                      color: kWhiteColor,
+                    ),
+                    getHorizontalSpace(10),
+                    Text(
+                      "Home",
+                      style: TextStyle(
+                          fontSize: CustomFontSize.extraExtraLarge(context),
+                          color: kWhiteColor),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

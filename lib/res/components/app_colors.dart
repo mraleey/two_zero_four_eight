@@ -12,6 +12,7 @@ const Color kPurpleColor = Color(0xff6435C9);
 const Color kDarkLight = Color(0xffDADADA);
 const Color kAmber = Color(0xFFFFD740);
 const Color kTransparent = Color(0x00000000);
+const Color kBrownColor = Color(0xFF5c5346);
 
 const Color kPrimaryGrey = Color(0xFF212121);
 const Color kPrimaryLightGreyS0 = Color(0xFFF5F5F5);

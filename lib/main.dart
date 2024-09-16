@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       defaultTransition: Transition.cupertino,
       home: const ModeView(),
       theme: ThemeData(
-        textTheme: GoogleFonts.nerkoOneTextTheme(),
+        textTheme: GoogleFonts.aDLaMDisplayTextTheme(),
         primaryTextTheme: GoogleFonts.nerkoOneTextTheme(),
       ),
     );
