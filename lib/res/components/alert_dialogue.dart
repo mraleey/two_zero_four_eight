@@ -7,7 +7,8 @@ import '../constants/fonts.dart';
 import 'app_colors.dart';
 
 class CustomAlertDialogue extends StatelessWidget {
-  const CustomAlertDialogue({super.key});
+  final VoidCallback? restart;
+  CustomAlertDialogue({super.key, this.restart});
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +74,7 @@ class CustomAlertDialogue extends StatelessWidget {
             ),
             child: MaterialButton(
               onPressed: () {
-                Get.back();
+                restart!();
               },
               child: Padding(
                 padding: const EdgeInsets.all(8.0),

@@ -45,9 +45,20 @@ class ModeView extends StatelessWidget {
               ),
               getVerticalSpace(10),
               Container(
-                color: kBrownColor,
                 width: Get.width * 0.9,
                 height: Get.height * 0.3,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: kBrownColor,
+                  boxShadow: [
+                    BoxShadow(
+                      color: kPrimaryRed.withOpacity(0.5),
+                      blurRadius: 20,
+                      spreadRadius: 1,
+                      offset: const Offset(0, 0),
+                    )
+                  ],
+                ),
                 child: Column(
                   children: [
                     Padding(
@@ -73,7 +84,7 @@ class ModeView extends StatelessWidget {
                         CustomButton(
                           text: "Play",
                           press: () {
-                            Get.to(() => const MergeView());
+                            Get.to(() => MergeView());
                           },
                           widthValue: 100,
                           color: kBrownColor.withOpacity(0.1),
@@ -85,9 +96,20 @@ class ModeView extends StatelessWidget {
               ),
               getVerticalSpace(15),
               Container(
-                color: kPurpleColor,
                 width: Get.width * 0.9,
                 height: Get.height * 0.3,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: kPurpleColor,
+                  boxShadow: [
+                    BoxShadow(
+                      color: kWhiteColor.withOpacity(0.5),
+                      blurRadius: 20,
+                      spreadRadius: 1,
+                      offset: const Offset(0, 0),
+                    )
+                  ],
+                ),
                 child: Column(
                   children: [
                     Padding(
