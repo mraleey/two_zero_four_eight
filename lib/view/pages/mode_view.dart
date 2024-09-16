@@ -24,32 +24,11 @@ class ModeView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("T",
+                  Text("2",
                       style: TextStyle(
                           fontSize: CustomFontSize.iconsFont(context) * 2,
                           color: kPrimaryYellow)),
-                  Text("I",
-                      style: TextStyle(
-                          fontSize: CustomFontSize.iconsFont(context) * 2,
-                          color: kPrimaryRed)),
-                  Text("C",
-                      style: TextStyle(
-                          fontSize: CustomFontSize.iconsFont(context) * 2,
-                          color: kPrimaryYellow)),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("T",
-                      style: TextStyle(
-                          fontSize: CustomFontSize.iconsFont(context) * 2,
-                          color: kPrimaryRed)),
-                  Text("A",
-                      style: TextStyle(
-                          fontSize: CustomFontSize.iconsFont(context) * 2,
-                          color: kPrimaryYellow)),
-                  Text("C",
+                  Text("0",
                       style: TextStyle(
                           fontSize: CustomFontSize.iconsFont(context) * 2,
                           color: kPrimaryRed)),
@@ -58,15 +37,11 @@ class ModeView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("T",
-                      style: TextStyle(
-                          fontSize: CustomFontSize.iconsFont(context) * 2,
-                          color: kPrimaryYellow)),
-                  Text("O",
+                  Text("4",
                       style: TextStyle(
                           fontSize: CustomFontSize.iconsFont(context) * 2,
                           color: kPrimaryRed)),
-                  Text("E",
+                  Text("8",
                       style: TextStyle(
                           fontSize: CustomFontSize.iconsFont(context) * 2,
                           color: kPrimaryYellow)),
