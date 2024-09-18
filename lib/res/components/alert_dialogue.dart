@@ -8,7 +8,7 @@ import 'app_colors.dart';
 
 class CustomAlertDialogue extends StatelessWidget {
   final VoidCallback? restart;
-  CustomAlertDialogue({super.key, this.restart});
+  const CustomAlertDialogue({super.key, this.restart});
 
   @override
   Widget build(BuildContext context) {

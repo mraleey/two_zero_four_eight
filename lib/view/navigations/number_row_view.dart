@@ -37,7 +37,6 @@ class NumberRowView extends StatelessWidget {
                         int number = numberRowController.grid[i][j];
                         return GestureDetector(
                           onTap: () {
-                            // User selects this column (j)
                             numberRowController.placeNumberInColumn(j);
                           },
                           child: AnimatedContainer(
@@ -82,7 +81,7 @@ class NumberRowView extends StatelessWidget {
               ),
               Obx(() {
                 if (numberRowController.isGameOver()) {
-                  return Center(
+                  return const Center(
                     child: Text(
                       "Game Over",
                       style: TextStyle(
@@ -93,7 +92,8 @@ class NumberRowView extends StatelessWidget {
                     ),
                   );
                 }
-                return SizedBox.shrink(); // Return nothing if not game over
+                return const SizedBox
+                    .shrink(); // Return nothing if not game over
               }),
             ],
           ),

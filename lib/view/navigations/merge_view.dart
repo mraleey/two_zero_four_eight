@@ -64,10 +64,10 @@ class MergeView extends StatelessWidget {
                   ],
                 );
               }),
-              Spacer(),
+              const Spacer(),
               Center(
                 child: Obx(() {
-                  return Container(
+                  return SizedBox(
                     width: Get.width * 0.9,
                     height: Get.width,
                     child: Stack(
@@ -80,7 +80,7 @@ class MergeView extends StatelessWidget {
                   );
                 }),
               ),
-              Spacer(),
+              const Spacer(),
             ],
           ),
         ),
@@ -110,7 +110,7 @@ class MergeView extends StatelessWidget {
           Text(
             "$score",
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 24,
             ),
@@ -153,10 +153,10 @@ class MergeView extends StatelessWidget {
     return Obx(() {
       final position = controller.positions[i][j];
       final tileSize = Get.width * 0.2;
-      final spacing = 8.0;
+      const spacing = 8.0;
 
       return AnimatedPositioned(
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
         top: position.x * (tileSize + spacing),
         left: position.y * (tileSize + spacing),
         child: Container(

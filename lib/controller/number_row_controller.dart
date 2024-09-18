@@ -45,8 +45,9 @@ class NumberRowController extends GetxController {
     for (int i = 0; i < 6; i++) {
       for (int j = 0; j < 5; j++) {
         int currentVal = grid[i][j];
-        if (_hasMatchingNeighbor(i, j, currentVal))
+        if (_hasMatchingNeighbor(i, j, currentVal)) {
           return false; // Merge possible
+        }
       }
     }
 
@@ -60,8 +61,9 @@ class NumberRowController extends GetxController {
       return;
     }
 
-    if (isDropping.value)
+    if (isDropping.value) {
       return; // If a number is currently dropping, do nothing
+    }
 
     isDropping.value = true; // Set the flag to indicate a number is dropping
     currentNumber.value = nextNumber.value;
@@ -70,7 +72,7 @@ class NumberRowController extends GetxController {
     selectedColumn.value = -1; // Reset user selection
 
     // Give the user some time to select the column (e.g., 3 seconds)
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
 
     // If the user hasn't selected a column, use a random column
     int column =
@@ -103,16 +105,18 @@ class NumberRowController extends GetxController {
   }
 
   void placeNumberInColumn(int column) {
-    if (isDropping.value)
+    if (isDropping.value) {
       return; // If a number is currently dropping, do nothing
+    }
 
     selectedColumn.value = column;
     _dropNumberInSelectedColumn(); // Drop the number immediately after user selects the column
   }
 
   Future<void> _dropNumberInSelectedColumn() async {
-    if (isDropping.value)
+    if (isDropping.value) {
       return; // If a number is currently dropping, do nothing
+    }
 
     int column =
         selectedColumn.value != -1 ? selectedColumn.value : Random().nextInt(5);

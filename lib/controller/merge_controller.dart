@@ -50,7 +50,6 @@ class MergeController extends GetxController {
     bool moved = false;
     for (int j = 0; j < 4; j++) {
       List<int> col = [grid[0][j], grid[1][j], grid[2][j], grid[3][j]];
-      List<int> originalCol = List.from(col);
       List<int> newCol = _shiftAndMergeRow(col, j, false);
       for (int i = 0; i < 4; i++) {
         if (grid[i][j] != newCol[i]) {
@@ -70,7 +69,6 @@ class MergeController extends GetxController {
     bool moved = false;
     for (int j = 0; j < 4; j++) {
       List<int> col = [grid[0][j], grid[1][j], grid[2][j], grid[3][j]];
-      List<int> originalCol = List.from(col);
       List<int> newCol =
           _shiftAndMergeRow(col.reversed.toList(), j, false).reversed.toList();
       for (int i = 0; i < 4; i++) {
@@ -88,7 +86,7 @@ class MergeController extends GetxController {
   }
 
   List<int> _shiftAndMergeRow(List<int> row, int index, bool isRow) {
-    List<int> newRow = row.where((num) => num != 0).toList();
+    List<int> newRow = row.where((int num) => num != 0).toList();
     for (int i = 0; i < newRow.length - 1; i++) {
       if (newRow[i] == newRow[i + 1]) {
         newRow[i] *= 2;
@@ -96,7 +94,9 @@ class MergeController extends GetxController {
         newRow[i + 1] = 0;
       }
     }
-    newRow = newRow.where((num) => num != 0).toList();
+    newRow = newRow.where((int num) {
+      return num != 0;
+    }).toList();
     while (newRow.length < 4) {
       newRow.add(0);
     }
