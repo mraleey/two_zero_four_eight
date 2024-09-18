@@ -135,7 +135,7 @@ class ModeView extends StatelessWidget {
                         CustomButton(
                           text: "Play",
                           press: () {
-                            Get.to(() => const NumberRowView());
+                            Get.to(() =>  NumberRowView());
                           },
                           widthValue: 100,
                           color: kPurpleColor.withOpacity(0.1),

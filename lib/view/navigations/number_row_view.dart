@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:two_zero_four_eight/res/components/app_colors.dart';
-
-import '../../res/components/alert_dialogue.dart';
-import '../../res/components/size.dart';
-import '../../res/constants/fonts.dart';
+import 'package:two_zero_four_eight/controller/number_row_controller.dart';
 
 class NumberRowView extends StatelessWidget {
-  const NumberRowView({super.key});
+  final NumberRowController numberRowController =
+      Get.put(NumberRowController());
+
+  NumberRowView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kTransparent,
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -20,84 +19,82 @@ class NumberRowView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Center(
-                child: Text(
-                  "Next Block",
-                  style: TextStyle(
-                    fontSize: CustomFontSize.extraLarge(context),
-                    color: kWhiteColor.withOpacity(0.5),
-                  ),
-                ),
-              ),
-              getVerticalSpace(20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  for (int i = 0; i < 5; i++)
-                    Icon(
-                      Icons.arrow_downward_sharp,
-                      color: kWhiteColor.withOpacity(0.7),
-                      size: 30,
-                    ),
-                ],
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  for (int i = 0; i < 6; i++)
-                    Padding(
-                      padding: const EdgeInsets.all(1.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          for (int j = 0; j < 5; j++)
-                            Container(
-                              width: Get.width * 0.15,
-                              height: Get.height * 0.08,
-                              decoration: BoxDecoration(
-                                color: kDarkLight.withOpacity(0.5),
-                              ),
-                            ),
-                        ],
+                child: Obx(() => Text(
+                      "Next Block: ${numberRowController.nextNumber}",
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.white.withOpacity(0.5),
                       ),
-                    ),
-                ],
+                    )),
               ),
-              getVerticalSpace(20),
-              Center(
-                child: Text(
-                  "Score",
-                  style: TextStyle(
-                    fontSize: CustomFontSize.extraLarge(context),
-                    color: kWhiteColor.withOpacity(0.5),
-                  ),
+              const SizedBox(height: 20),
+              Obx(
+                () => Column(
+                  children: List.generate(6, (i) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: List.generate(5, (j) {
+                        int number = numberRowController.grid[i][j];
+                        return GestureDetector(
+                          onTap: () {
+                            // User selects this column (j)
+                            numberRowController.placeNumberInColumn(j);
+                          },
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 500),
+                            width: Get.width * 0.15,
+                            height: Get.height * 0.08,
+                            decoration: BoxDecoration(
+                              color: number > 0
+                                  ? numberRowController
+                                      .getColorForNumber(number)
+                                  : Colors.grey.withOpacity(0.5),
+                            ),
+                            child: Center(
+                              child: number > 0
+                                  ? Text(
+                                      number.toString(),
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                      ),
+                                    )
+                                  : null,
+                            ),
+                          ),
+                        );
+                      }),
+                    );
+                  }),
                 ),
               ),
-              getVerticalSpace(10),
-              Center(
-                child: Text(
-                  "0",
-                  style: TextStyle(
-                    fontSize: CustomFontSize.extraLarge(context),
-                    color: kWhiteColor,
-                  ),
-                ),
-              ),
+              const SizedBox(height: 20),
               Align(
                 alignment: Alignment.bottomRight,
                 child: IconButton(
                   onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return CustomAlertDialogue();
-                      },
-                    );
+                    // Pause or restart game
                   },
                   icon: const Icon(Icons.pause_circle_filled),
-                  color: kWhiteColor,
+                  color: Colors.white,
                   iconSize: 30,
                 ),
               ),
+              Obx(() {
+                if (numberRowController.isGameOver()) {
+                  return Center(
+                    child: Text(
+                      "Game Over",
+                      style: TextStyle(
+                        fontSize: 36,
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  );
+                }
+                return SizedBox.shrink(); // Return nothing if not game over
+              }),
             ],
           ),
         ),
